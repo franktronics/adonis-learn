@@ -19,7 +19,16 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import Logger from '@ioc:Adonis/Core/Logger'
 
 Route.get('/', async ({ view }) => {
   return view.render('home')
+})
+Route.post("/post", async ({response}) => {
+  Logger.info("info")
+  response.send({message: "ok"})
+})
+Route.get('/get', async ({request}) => {
+  console.log(request.url())
+  return {test: "test"}
 })

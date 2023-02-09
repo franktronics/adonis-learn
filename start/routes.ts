@@ -19,16 +19,16 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import Logger from '@ioc:Adonis/Core/Logger'
 
 Route.get('/', async ({ view }) => {
   return view.render('home')
 })
-Route.post("/post", async ({response}) => {
-  Logger.info("info")
+Route.post("/post", async ({response, session}) => {
+  console.log(session.get('cart_total'))
   response.send({message: "ok"})
 })
-Route.get('/get', async ({request}) => {
-  console.log(request.url())
+Route.get('/get', async ({session}) => {
+  session.put('cart_total', 1900)
+  console.log(session.get('cart_total'))
   return {test: "test"}
 })

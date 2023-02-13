@@ -29,6 +29,5 @@ Route.post("/post", async ({response, session}) => {
 })
 Route.get('/get', async ({session}) => {
   session.put('cart_total', 1900)
-  console.log(session.get('cart_total'))
   return {test: "test"}
 })
